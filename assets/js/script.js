@@ -3,17 +3,17 @@ var generatePassword = function() {
   // init passwordString to be sent to writePassword() function
   var passwordString = "";
   
-  // prompt user for password length; if user selects cancel, the program with close prompt and do nothing
+  // prompt user for password length; if user selects cancel, the program will close prompt and do nothing
   var passwordLength = passwordLengthPrompt();
   if (passwordLength === null) {
     passwordString = null;
     return passwordString;
   }
   
-  // prompt user for desired character sets
+  // prompt user for desired character types
   var passwordCharSet = passwordCharPrompt();
 
-  // uses Math.random to select a character from the user selected character set and concatenates the string based on user desired length
+  // uses Math.random to select a character from the user selected character types and concatenates password string based on user desired length
   var passwordCharSetLength = passwordCharSet.length;
   for (var i = 0; i < passwordLength; i++) {
     passwordString += passwordCharSet.charAt(Math.floor(Math.random()*passwordCharSetLength));
@@ -41,9 +41,9 @@ var passwordLengthPrompt = function() {
   return pLength;
 }
 
-// prompts user for desired character sets
+// prompts user for desired character types
 var passwordCharPrompt = function() {
-  // inits character sets
+  // inits character types
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numeric = "0123456789";
@@ -54,7 +54,7 @@ var passwordCharPrompt = function() {
   var promptNumeric = window.confirm("Include numbers?");
   var promptSpecialChar = window.confirm("Include special characters?");
 
-  // if character set is not desired, returns empty string
+  // if character type is not desired, sets empty string for designated character type
   if (!promptLowerCase) {
     lowerCase = "";
   }
@@ -68,11 +68,11 @@ var passwordCharPrompt = function() {
     specialChar = "";
   }
 
-  // combines updated strings to single password character set
+  // combines character type strings to single password character set
   charSet = lowerCase + upperCase + numeric + specialChar;
 
 
-  // checks to make sure user has selected at least one character set, ie character set is not empty
+  // checks to make sure user has selected at least one character type, ie character set is not empty
   if (charSet === "") {
     window.alert("You must select at least one character type.");
     return passwordCharPrompt();
