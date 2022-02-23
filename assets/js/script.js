@@ -24,7 +24,7 @@ var generatePassword = function() {
 
 // prompts user for desired password length
 var passwordLengthPrompt = function() {
-  var pLength = window.prompt("Password length? Select 8 - 128.");
+  var pLength = window.prompt("Desired password length?\nPlease select from 8 - 128.");
 
   // if cancel, do nothing
   if (pLength === null) {
@@ -49,10 +49,10 @@ var passwordCharPrompt = function() {
   var numeric = "0123456789";
   var specialChar = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
 
-  var promptLowerCase = window.confirm("Lower case?");
-  var promptUpperCase = window.confirm("Upper case?");
-  var promptNumeric = window.confirm("Numbers?");
-  var promptSpecialChar = window.confirm("Special characters?");
+  var promptLowerCase = window.confirm("Which character types should be used?\nInclude lower case?");
+  var promptUpperCase = window.confirm("Include upper case?");
+  var promptNumeric = window.confirm("Include numbers?");
+  var promptSpecialChar = window.confirm("Include special characters?");
 
   // if character set is not desired, returns empty string
   if (!promptLowerCase) {
@@ -74,7 +74,7 @@ var passwordCharPrompt = function() {
 
   // checks to make sure user has selected at least one character set, ie character set is not empty
   if (charSet === "") {
-    window.alert("You must select at least one character set.");
+    window.alert("You must select at least one character type.");
     return passwordCharPrompt();
   }
 
